@@ -6,6 +6,7 @@ var $firstEvo = $('#first-evo');
 var $secondEvo = $('#second-evo');
 var $additionalData = $('#words');
 var $spans = $('span');
+var $textArea = $('#textArea');
 
 $submit.on("click",function(){
 $.ajax({
@@ -13,6 +14,7 @@ $.ajax({
   success: function(result){
 		$pokemon.text(result.chain.species.name);
 		$spans.text('');
+		$textArea.addClass('bg-dark container col-lg-4 p-3');
 		if(result.chain.evolves_to[0]==undefined){return;};
 		if(result.chain.evolves_to[0].evolution_details[0].min_level){
 			$min_level.text("Evolves at level " + result.chain.evolves_to[0].evolution_details[0].min_level + " into ")

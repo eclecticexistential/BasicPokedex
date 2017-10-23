@@ -1,0 +1,10 @@
+body {
+	background-image: url(pokemon-go-1569794_1280.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+h1{
+	color:#FFF;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
