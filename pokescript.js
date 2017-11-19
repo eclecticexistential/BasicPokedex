@@ -7,11 +7,11 @@ var $secondEvo = $('#second-evo');
 var $additionalData = $('#words');
 var $spans = $('span');
 var $textArea = $('#textArea');
+var $pokeImg= $('#pokeImg');
 
 $submit.on("click",function(){
-$.ajax({
-  url: "https://pokeapi.co/api/v2/evolution-chain/"+$pokemonName.val()+"/",
-  success: function(result){
+$.get("https://pokeapi.co/api/v2/evolution-chain/"+$pokemonName.val()+"/").
+  done(function(result){
 		$pokemon.text(result.chain.species.name);
 		$spans.text('');
 		$textArea.addClass('bg-dark container col-lg-4 p-3');
@@ -25,13 +25,9 @@ $.ajax({
 			$additionalData.text(" This Pokemon may evolve again at level " + result.chain.evolves_to[0].evolves_to[0].evolution_details[0].min_level + " into ");
 			$secondEvo.text(result.chain.evolves_to[0].evolves_to[0].species.name + ".");
 		}
-  },
-  error: function(){
+  }).fail(function(){
 	  $pokemon.text("Try the Pokemon's ID number instead.");
-  }
-})
+	  $spans.text('');
+  })
   $pokemonName.val('');
 })
-
-
-
